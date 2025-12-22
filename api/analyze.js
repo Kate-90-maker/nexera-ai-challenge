@@ -1,36 +1,25 @@
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST allowed" });
   }
 
-  const { text } = req.body;
-
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content: "You are an educational assistant."
-        },
-        {
-          role: "user",
-          content: `Explain what this object is used for: ${text}`
-        }
-      ]
-    });
+    const { prompt } = req.body;
 
-    res.status(200).json({
-      summary: response.choices[0].message.content
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "AI request failed" });
+    if (!prompt) {
+      return res.status(400).json({ error: "No prompt provided" });
+    }
+
+    // 🧠 MOCK AI RESPONSE
+    const mockResponse = {
+      description: `You entered: "${prompt}". This appears to describe a safety-related object.`,
+      safety: "A hard hat is personal protective equipment used to prevent head injuries.",
+      confidence: 0.87
+    };
+
+    return res.status(200).json(mockResponse);
+  } catch (error) {
+    console.error("Mock API error:", error);
+    return res.status(500).json({ error: "Mock AI failed" });
   }
 }
