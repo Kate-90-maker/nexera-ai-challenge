@@ -12,9 +12,16 @@ async function generate() {
     });
 
     const data = await res.json();
+
+    if (data.error) {
+      output.innerText = "ERROR: " + data.error;
+      return;
+    }
+
     output.innerText = data.summary;
+
   } catch (err) {
     console.error(err);
-    output.innerText = "Something went wrong.";
+    output.innerText = "Frontend fetch failed.";
   }
 }
