@@ -28,11 +28,19 @@ async function generate() {
     }
 
     output.innerHTML = `
-      <strong>Description:</strong><br>
-      ${data.description}<br><br>
-      <strong>Safety Info:</strong><br>
-      ${data.safety}
-    `;
+  <h3>${data.title}</h3>
+
+  <strong>Description:</strong><br>
+  ${data.description}<br><br>
+
+  <strong>Usage:</strong><br>
+  ${data.usage}<br><br>
+
+  <strong>Training Note:</strong><br>
+  ${data.trainingNote}<br><br>
+
+  <em>3D Model Status:</em> ✅ Model generated and ready for viewing
+`;
 
   } catch (err) {
     console.error(err);
