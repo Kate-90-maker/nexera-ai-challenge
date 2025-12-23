@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Avatar Command Prototype</title>
+  <script defer src="avatar.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>AI Avatar Command Interface</h2>
+
+  <input
+    id="command"
+    type="text"
+    placeholder="e.g. Wave hello to the learner"
+    style="width: 300px;"
+  />
+
+  <button onclick="runCommand()">Run Command</button>
+
+  <div id="result" style="margin-top: 16px;"></div>
+
+  <div id="avatar">Idle</div>
+
+</body>
+</html>
