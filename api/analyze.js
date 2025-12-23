@@ -10,11 +10,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "No prompt provided" });
     }
 
-    // 🧠 MOCK AI RESPONSE
+    // ✅ MOCK AI RESPONSE (EDUCATIONAL FORMAT)
     const mockResponse = {
-      description: `You entered: "${prompt}". This appears to describe a safety-related object.`,
-      safety: "A hard hat is personal protective equipment used to prevent head injuries.",
-      confidence: 0.87
+      title: "Construction Safety Equipment",
+      description: `The object described ("${prompt}") is commonly used in construction and industrial environments.`,
+      usage:
+        "Hard hats are worn to protect workers from falling objects, impacts, and potential head injuries on job sites.",
+      trainingNote:
+        "Learners should ensure the hard hat fits correctly, is undamaged, and is worn at all times in designated safety zones."
     };
 
     return res.status(200).json(mockResponse);
